@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <!-- ================================================= -->
+    <!-- DEPARTMENT -->
+    <!-- ================================================= -->
+
+    <record id="seq_department" model="ir.sequence">
+        <field name="name">Department</field>
+        <field name="code">university.department</field>
+        <field name="prefix">DEP</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <!-- ================================================= -->
+    <!-- TEACHER -->
+    <!-- ================================================= -->
+
+    <record id="seq_teacher" model="ir.sequence">
+        <field name="name">Teacher</field>
+        <field name="code">university.teacher</field>
+        <field name="prefix">TCH</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <!-- ================================================= -->
+    <!-- STUDENT -->
+    <!-- ================================================= -->
+
+    <record id="seq_student" model="ir.sequence">
+        <field name="name">Student</field>
+        <field name="code">university.student</field>
+        <field name="prefix">STD</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <!-- ================================================= -->
+    <!-- SUBJECT -->
+    <!-- ================================================= -->
+
+    <record id="seq_subject" model="ir.sequence">
+        <field name="name">Subject</field>
+        <field name="code">university.subject</field>
+        <field name="prefix">SUB</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <!-- ================================================= -->
+    <!-- CLASSROOM -->
+    <!-- ================================================= -->
+
+    <record id="seq_classroom" model="ir.sequence">
+        <field name="name">Classroom</field>
+        <field name="code">university.classroom</field>
+        <field name="prefix">CLS</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <!-- ================================================= -->
+    <!-- ENROLLMENT -->
+    <!-- ================================================= -->
+
+    <record id="seq_enrollment" model="ir.sequence">
+        <field name="name">Enrollment</field>
+        <field name="code">university.enrollment</field>
+        <field name="prefix">ENR</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <!-- ================================================= -->
+    <!-- GRADE -->
+    <!-- ================================================= -->
+
+    <record id="seq_grade" model="ir.sequence">
+        <field name="name">Grade</field>
+        <field name="code">university.grade</field>
+        <field name="prefix">GRD</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <!-- ================================================= -->
+    <!-- ATTENDANCE -->
+    <!-- ================================================= -->
+
+    <record id="seq_attendance" model="ir.sequence">
+        <field name="name">Attendance</field>
+        <field name="code">university.attendance</field>
+        <field name="prefix">ATT</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <!-- ================================================= -->
+    <!-- SCHEDULE -->
+    <!-- ================================================= -->
+
+    <record id="seq_schedule" model="ir.sequence">
+        <field name="name">Schedule</field>
+        <field name="code">university.schedule</field>
+        <field name="prefix">SCH</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+
+</odoo>

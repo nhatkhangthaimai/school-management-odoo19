@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================================================= -->
+    <!-- FORM VIEW -->
+    <!-- ================================================= -->
+
+    <record id="dashboard_form_view" model="ir.ui.view">
+
+        <field name="name">dashboard.form</field>
+
+        <field name="model">university.dashboard</field>
+
+        <field name="arch" type="xml">
+
+            <form string="University Dashboard"
+                  create="0"
+                  edit="0"
+                  delete="0">
+
+                <sheet>
+
+                    <div class="oe_title">
+
+                        <h1>📊 University ERP Dashboard</h1>
+
+                    </div>
+
+                    <!-- KPI -->
+
+                    <group col="4">
+
+                        <group string="Students">
+                            <field name="total_student" readonly="1"/>
+                        </group>
+
+                        <group string="Teachers">
+                            <field name="total_teacher" readonly="1"/>
+                        </group>
+
+                        <group string="Departments">
+                            <field name="total_department" readonly="1"/>
+                        </group>
+
+                        <group string="Subjects">
+                            <field name="total_subject" readonly="1"/>
+                        </group>
+
+                    </group>
+
+                    <group col="4">
+
+                        <group string="Classrooms">
+                            <field name="total_classroom" readonly="1"/>
+                        </group>
+
+                        <group string="Enrollments">
+                            <field name="total_enrollment" readonly="1"/>
+                        </group>
+
+                        <group string="Grades">
+                            <field name="total_grade" readonly="1"/>
+                        </group>
+
+                        <group string="Attendance">
+                            <field name="total_attendance" readonly="1"/>
+                        </group>
+
+                    </group>
+
+                    <separator string="Academic Statistics"/>
+
+                    <group>
+
+                        <group>
+
+                            <field name="average_score" readonly="1"/>
+
+                        </group>
+
+                        <group>
+
+                            <field name="pass_rate" readonly="1"/>
+
+                        </group>
+
+                        <group>
+
+                            <field name="fail_rate" readonly="1"/>
+
+                        </group>
+
+                    </group>
+
+                    <notebook>
+
+                        <page string="Summary">
+
+                            <group col="4">
+
+                                <group string="Students">
+                                    <field name="total_student" readonly="1"/>
+                                </group>
+
+                                <group string="Teachers">
+                                    <field name="total_teacher" readonly="1"/>
+                                </group>
+
+                                <group string="Departments">
+                                    <field name="total_department" readonly="1"/>
+                                </group>
+
+                                <group string="Subjects">
+                                    <field name="total_subject" readonly="1"/>
+                                </group>
+
+                            </group>
+
+                            <group col="4">
+
+                                <group string="Classrooms">
+                                    <field name="total_classroom" readonly="1"/>
+                                </group>
+
+                                <group string="Enrollments">
+                                    <field name="total_enrollment" readonly="1"/>
+                                </group>
+
+                                <group string="Grades">
+                                    <field name="total_grade" readonly="1"/>
+                                </group>
+
+                                <group string="Attendance">
+                                    <field name="total_attendance" readonly="1"/>
+                                </group>
+
+                            </group>
+
+                        </page>
+
+                        <page string="Academic">
+
+                            <group>
+
+                                <group>
+
+                                    <field name="average_score" readonly="1"/>
+
+                                </group>
+
+                                <group>
+
+                                    <field name="pass_rate" readonly="1"/>
+
+                                </group>
+
+                                <group>
+
+                                    <field name="fail_rate" readonly="1"/>
+
+                                </group>
+
+                            </group>
+
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+
+            </form>
+
+        </field>
+
+    </record>
+
+    <!-- ================================================= -->
+    <!-- ACTION -->
+    <!-- ================================================= -->
+
+    <record id="action_dashboard" model="ir.actions.act_window">
+
+        <field name="name">Dashboard</field>
+
+        <field name="res_model">university.dashboard</field>
+
+        <field name="view_mode">form</field>
+
+        <field name="target">current</field>
+
+        <field name="help" type="html">
+
+            <p class="o_view_nocontent_smiling_face">
+                University Dashboard
+            </p>
+
+            <p>
+                View statistics of students, teachers, departments,
+                classrooms, enrollments, grades and attendance.
+            </p>
+
+        </field>
+
+    </record>
+
+</odoo>

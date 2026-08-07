@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_department,department,model_university_department,,1,1,1,1
+access_teacher,teacher,model_university_teacher,,1,1,1,1
+access_student,student,model_university_student,,1,1,1,1
+access_subject,subject,model_university_subject,,1,1,1,1
+access_classroom,classroom,model_university_classroom,,1,1,1,1
+access_enrollment,enrollment,model_university_enrollment,,1,1,1,1
+access_grade,grade,model_university_grade,,1,1,1,1
+access_attendance,attendance,model_university_attendance,,1,1,1,1
+access_schedule,schedule,model_university_schedule,,1,1,1,1
+access_dashboard,dashboard,model_university_dashboard,,1,1,1,1

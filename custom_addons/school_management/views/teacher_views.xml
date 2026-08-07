@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================================================= -->
+    <!-- TREE VIEW -->
+    <!-- ================================================= -->
+
+    <record id="teacher_tree_view" model="ir.ui.view">
+
+        <field name="name">teacher.tree</field>
+
+        <field name="model">university.teacher</field>
+
+        <field name="arch" type="xml">
+
+            <list>
+
+                <field name="code"/>
+
+                <field name="name"/>
+
+                <field name="department_id"/>
+
+                <field name="degree"/>
+
+                <field name="phone"/>
+
+                <field name="email"/>
+
+                <field name="active"/>
+
+            </list>
+
+        </field>
+
+    </record>
+
+    <!-- ================================================= -->
+    <!-- FORM VIEW -->
+    <!-- ================================================= -->
+
+    <record id="teacher_form_view" model="ir.ui.view">
+
+        <field name="name">teacher.form</field>
+
+        <field name="model">university.teacher</field>
+
+        <field name="arch" type="xml">
+
+            <form string="Teacher">
+
+                <sheet>
+
+                    <!-- ================================================= -->
+                    <!-- SMART BUTTON -->
+                    <!-- ================================================= -->
+
+                    <div class="oe_button_box" name="button_box">
+
+                        <button
+                            name="action_subjects"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-book">
+
+                            <field
+                                name="subject_count"
+                                widget="statinfo"
+                                string="Subjects"/>
+
+                        </button>
+
+                        <button
+                            name="action_classrooms"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-home">
+
+                            <field
+                                name="classroom_count"
+                                widget="statinfo"
+                                string="Classes"/>
+
+                        </button>
+
+                        <button
+                            name="action_schedules"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-calendar">
+
+                            <field
+                                name="schedule_count"
+                                widget="statinfo"
+                                string="Schedules"/>
+
+                        </button>
+
+                        <button
+                            name="action_attendance"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-check-square">
+
+                            <field
+                                name="attendance_count"
+                                widget="statinfo"
+                                string="Attendance"/>
+
+                        </button>
+
+                        <button
+                            name="action_grades"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-graduation-cap">
+
+                            <field
+                                name="grade_count"
+                                widget="statinfo"
+                                string="Grades"/>
+
+                        </button>
+
+                    </div>
+
+                    <!-- ================================================= -->
+                    <!-- INFORMATION -->
+                    <!-- ================================================= -->
+
+                    <group>
+
+                        <group>
+
+                            <field name="image" widget="image"/>
+
+                            <field name="code"/>
+
+                            <field name="name"/>
+
+                            <field name="department_id"/>
+
+                            <field name="degree"/>
+
+                        </group>
+
+                        <group>
+
+                            <field name="phone"/>
+
+                            <field name="email"/>
+
+                            <field name="active"/>
+
+                        </group>
+
+                    </group>
+
+                    <group>
+
+                        <field
+                            name="note"
+                            placeholder="Teacher note..."/>
+
+                    </group>
+
+                    <!-- ================================================= -->
+                    <!-- NOTEBOOK -->
+                    <!-- ================================================= -->
+
+                    <notebook>
+                                            <!-- ========================================= -->
+                        <!-- SUBJECTS -->
+                        <!-- ========================================= -->
+
+                        <page string="Subjects">
+
+                            <field
+                                name="subject_ids"
+                                readonly="1">
+
+                                <list>
+
+                                    <field name="code"/>
+
+                                    <field name="name"/>
+
+                                    <field name="department_id"/>
+
+                                    <field name="credit"/>
+
+                                    <field name="active"/>
+
+                                </list>
+
+                            </field>
+
+                        </page>
+
+                        <!-- ========================================= -->
+                        <!-- CLASSROOMS -->
+                        <!-- ========================================= -->
+
+                        <page string="Classes">
+
+                            <field
+                                name="classroom_ids"
+                                readonly="1">
+
+                                <list>
+
+                                    <field name="code"/>
+
+                                    <field name="name"/>
+
+                                    <field name="subject_id"/>
+
+                                    <field name="semester"/>
+
+                                    <field name="year"/>
+
+                                    <field name="active"/>
+
+                                </list>
+
+                            </field>
+
+                        </page>
+
+                        <!-- ========================================= -->
+                        <!-- SCHEDULES -->
+                        <!-- ========================================= -->
+
+                        <page string="Schedules">
+
+                            <field
+                                name="schedule_ids"
+                                readonly="1">
+
+                                <list>
+
+                                    <field name="classroom_id"/>
+
+                                    <field name="subject_id"/>
+
+                                    <field name="day_of_week"/>
+
+                                    <field name="start_time"/>
+
+                                    <field name="end_time"/>
+
+                                </list>
+
+                            </field>
+
+                        </page>
+
+                        <!-- ========================================= -->
+                        <!-- ATTENDANCE -->
+                        <!-- ========================================= -->
+
+                        <page string="Attendance">
+
+                            <field
+                                name="attendance_ids"
+                                readonly="1">
+
+                                <list>
+
+                                    <field name="student_id"/>
+
+                                    <field name="classroom_id"/>
+
+                                    <field name="date"/>
+
+                                    <field name="status"/>
+
+                                </list>
+
+                            </field>
+
+                        </page>
+
+                        <!-- ========================================= -->
+                        <!-- GRADES -->
+                        <!-- ========================================= -->
+
+                        <page string="Grades">
+
+                            <field
+                                name="grade_ids"
+                                readonly="1">
+
+                                <list
+                                    decoration-success="status=='pass'"
+                                    decoration-danger="status=='fail'">
+
+                                    <field name="student_id"/>
+
+                                    <field name="classroom_id"/>
+
+                                    <field name="total"/>
+
+                                    <field name="letter_grade"/>
+
+                                    <field name="classification"/>
+
+                                    <field name="status"/>
+
+                                </list>
+
+                            </field>
+
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+
+            </form>
+
+        </field>
+
+    </record>
+        <!-- ================================================= -->
+    <!-- SEARCH VIEW -->
+    <!-- ================================================= -->
+
+    <!-- ================================================= -->
+<!-- SEARCH VIEW -->
+<!-- ================================================= -->
+
+<record id="teacher_search_view" model="ir.ui.view">
+
+    <field name="name">teacher.search</field>
+
+    <field name="model">university.teacher</field>
+
+    <field name="arch" type="xml">
+
+        <search>
+
+            <field name="code"/>
+            <field name="name"/>
+            <field name="department_id"/>
+            <field name="degree"/>
+            <field name="phone"/>
+            <field name="email"/>
+
+            <separator/>
+
+            <filter
+                name="filter_active"
+                string="Active"
+                domain="[('active','=',True)]"/>
+
+            <separator/>
+
+            <filter
+                name="group_department"
+                string="Department"
+                context="{'group_by':'department_id'}"/>
+
+            <filter
+                name="group_degree"
+                string="Degree"
+                context="{'group_by':'degree'}"/>
+
+        </search>
+
+    </field>
+
+</record>
+
+    <!-- ================================================= -->
+    <!-- ACTION -->
+    <!-- ================================================= -->
+
+    <record id="action_teacher" model="ir.actions.act_window">
+
+        <field name="name">Teachers</field>
+
+        <field name="res_model">university.teacher</field>
+
+        <field name="view_mode">list,form</field>
+
+        <field name="search_view_id" ref="teacher_search_view"/>
+
+        <field name="help" type="html">
+
+            <p class="o_view_nocontent_smiling_face">
+                Create your first teacher.
+            </p>
+
+            <p>
+                Manage teacher information, teaching subjects,
+                classrooms, schedules, attendance and grades.
+            </p>
+
+        </field>
+
+    </record>
+
+</odoo>

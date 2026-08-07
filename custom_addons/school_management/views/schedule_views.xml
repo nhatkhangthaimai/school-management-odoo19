@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================================================= -->
+    <!-- TREE VIEW -->
+    <!-- ================================================= -->
+
+    <record id="schedule_tree_view" model="ir.ui.view">
+
+        <field name="name">schedule.tree</field>
+
+        <field name="model">university.schedule</field>
+
+        <field name="arch" type="xml">
+
+            <list>
+
+                <field name="code"/>
+
+                <field name="classroom_id"/>
+
+                <field name="subject_id"/>
+
+                <field name="teacher_id"/>
+
+                <field name="day_of_week"/>
+
+                <field name="start_time"/>
+
+                <field name="end_time"/>
+
+                <field name="room"/>
+
+                <field name="semester"/>
+
+                <field name="year"/>
+
+            </list>
+
+        </field>
+
+    </record>
+
+    <!-- ================================================= -->
+    <!-- FORM VIEW -->
+    <!-- ================================================= -->
+
+    <record id="schedule_form_view" model="ir.ui.view">
+
+        <field name="name">schedule.form</field>
+
+        <field name="model">university.schedule</field>
+
+        <field name="arch" type="xml">
+
+            <form string="Schedule">
+
+                <sheet>
+
+                    <group>
+
+                        <group>
+
+                            <field name="code"/>
+
+                            <field name="classroom_id"/>
+
+                            <field
+                                name="subject_id"
+                                readonly="1"/>
+
+                            <field
+                                name="teacher_id"
+                                readonly="1"/>
+
+                            <field
+                                name="room"/>
+
+                        </group>
+
+                        <group>
+
+                            <field
+                                name="semester"
+                                readonly="1"/>
+
+                            <field
+                                name="year"
+                                readonly="1"/>
+
+                            <field
+                                name="day_of_week"/>
+
+                            <field
+                                name="start_time"/>
+
+                            <field
+                                name="end_time"/>
+
+                        </group>
+
+                    </group>
+
+                    <group>
+
+                        <field
+                            name="note"
+                            placeholder="Schedule note..."/>
+
+                    </group>
+
+                    <notebook>
+
+                        <page string="Note">
+
+                            <field
+                                name="note"
+                                nolabel="1"
+                                placeholder="Enter schedule note..."/>
+
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+
+            </form>
+
+        </field>
+
+    </record>
+        <!-- ================================================= -->
+    <!-- SEARCH VIEW -->
+    <!-- ================================================= -->
+
+    <record id="schedule_search_view" model="ir.ui.view">
+
+        <field name="name">schedule.search</field>
+
+        <field name="model">university.schedule</field>
+
+        <field name="arch" type="xml">
+
+            <search>
+
+                <field name="code"/>
+
+                <field name="classroom_id"/>
+
+                <field name="subject_id"/>
+
+                <field name="teacher_id"/>
+
+                <field name="room"/>
+
+                <separator/>
+
+                <filter
+                    name="monday"
+                    string="Monday"
+                    domain="[('day_of_week','=','mon')]"/>
+
+                <filter
+                    name="tuesday"
+                    string="Tuesday"
+                    domain="[('day_of_week','=','tue')]"/>
+
+                <filter
+                    name="wednesday"
+                    string="Wednesday"
+                    domain="[('day_of_week','=','wed')]"/>
+
+                <filter
+                    name="thursday"
+                    string="Thursday"
+                    domain="[('day_of_week','=','thu')]"/>
+
+                <filter
+                    name="friday"
+                    string="Friday"
+                    domain="[('day_of_week','=','fri')]"/>
+
+                <filter
+                    name="saturday"
+                    string="Saturday"
+                    domain="[('day_of_week','=','sat')]"/>
+
+                <filter
+                    name="sunday"
+                    string="Sunday"
+                    domain="[('day_of_week','=','sun')]"/>
+
+                <separator/>
+
+                <filter
+                    name="group_teacher"
+                    string="Teacher"
+                    context="{'group_by':'teacher_id'}"/>
+
+                <filter
+                    name="group_subject"
+                    string="Subject"
+                    context="{'group_by':'subject_id'}"/>
+
+                <filter
+                    name="group_classroom"
+                    string="Classroom"
+                    context="{'group_by':'classroom_id'}"/>
+
+                <filter
+                    name="group_day"
+                    string="Day"
+                    context="{'group_by':'day_of_week'}"/>
+
+            </search>
+
+        </field>
+
+    </record>
+
+    <!-- ================================================= -->
+    <!-- ACTION -->
+    <!-- ================================================= -->
+
+    <record id="action_schedule" model="ir.actions.act_window">
+
+        <field name="name">Schedules</field>
+
+        <field name="res_model">university.schedule</field>
+
+        <field name="view_mode">list,form</field>
+
+        <field name="search_view_id"
+               ref="schedule_search_view"/>
+
+        <field name="help" type="html">
+
+            <p class="o_view_nocontent_smiling_face">
+                Create your first schedule.
+            </p>
+
+            <p>
+                Manage classroom schedules, teaching time,
+                teachers and rooms.
+            </p>
+
+        </field>
+
+    </record>
+
+</odoo>

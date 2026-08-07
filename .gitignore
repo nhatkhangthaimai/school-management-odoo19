@@ -1,0 +1,35 @@
+# Ignore everything
+*
+
+# Allow .gitignore itself
+!.gitignore
+
+# Allow custom addons
+!custom_addons/
+!custom_addons/school_management/
+!custom_addons/school_management/**
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore virtual environments
+venv/
+.venv/
+env/
+
+# Ignore Odoo config
+odoo.conf
+
+# Ignore IDE
+.vscode/
+.idea/
+
+# Ignore logs
+*.log
+
+# Ignore database files
+*.db
+*.sqlite
+*.dump

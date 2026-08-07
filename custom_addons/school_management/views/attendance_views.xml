@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================================================= -->
+    <!-- TREE VIEW -->
+    <!-- ================================================= -->
+
+    <record id="attendance_tree_view" model="ir.ui.view">
+
+        <field name="name">attendance.tree</field>
+
+        <field name="model">university.attendance</field>
+
+        <field name="arch" type="xml">
+
+            <list
+                decoration-success="status=='present'"
+                decoration-warning="status=='late'"
+                decoration-danger="status=='absent'"
+                decoration-info="status=='leave'">
+
+                <field name="code"/>
+
+                <field name="student_id"/>
+
+                <field name="classroom_id"/>
+
+                <field name="subject_id"/>
+
+                <field name="teacher_id"/>
+
+                <field name="date"/>
+
+                <field name="status"/>
+
+            </list>
+
+        </field>
+
+    </record>
+
+    <!-- ================================================= -->
+    <!-- FORM VIEW -->
+    <!-- ================================================= -->
+
+    <record id="attendance_form_view" model="ir.ui.view">
+
+        <field name="name">attendance.form</field>
+
+        <field name="model">university.attendance</field>
+
+        <field name="arch" type="xml">
+
+            <form string="Attendance">
+
+                <sheet>
+
+                    <group>
+
+                        <group>
+
+                            <field name="code"/>
+
+                            <field name="student_id"/>
+
+                            <field name="classroom_id"/>
+
+                            <field
+                                name="subject_id"
+                                readonly="1"/>
+
+                            <field
+                                name="teacher_id"
+                                readonly="1"/>
+
+                        </group>
+
+                        <group>
+
+                            <field name="date"/>
+
+                            <field name="status"/>
+
+                            <field name="active"/>
+
+                        </group>
+
+                    </group>
+
+                    <group>
+
+                        <field
+                            name="note"
+                            placeholder="Attendance note..."/>
+
+                    </group>
+
+                    <!-- ========================================= -->
+                    <!-- NOTEBOOK -->
+                    <!-- ========================================= -->
+
+                    <notebook>
+
+                        <page string="Note">
+
+                            <field
+                                name="note"
+                                nolabel="1"
+                                placeholder="Enter attendance note..."/>
+
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+
+            </form>
+
+        </field>
+
+    </record>
+        <!-- ================================================= -->
+    <!-- SEARCH VIEW -->
+    <!-- ================================================= -->
+
+    <record id="attendance_search_view" model="ir.ui.view">
+
+        <field name="name">attendance.search</field>
+
+        <field name="model">university.attendance</field>
+
+        <field name="arch" type="xml">
+
+            <search>
+
+                <field name="code"/>
+
+                <field name="student_id"/>
+
+                <field name="classroom_id"/>
+
+                <field name="subject_id"/>
+
+                <field name="teacher_id"/>
+
+                <field name="date"/>
+
+                <separator/>
+
+                <filter
+                    name="filter_present"
+                    string="Present"
+                    domain="[('status','=','present')]"/>
+
+                <filter
+                    name="filter_late"
+                    string="Late"
+                    domain="[('status','=','late')]"/>
+
+                <filter
+                    name="filter_absent"
+                    string="Absent"
+                    domain="[('status','=','absent')]"/>
+
+                <filter
+                    name="filter_leave"
+                    string="Leave"
+                    domain="[('status','=','leave')]"/>
+
+                <separator/>
+
+                <filter
+                    name="group_student"
+                    string="Student"
+                    context="{'group_by':'student_id'}"/>
+
+                <filter
+                    name="group_teacher"
+                    string="Teacher"
+                    context="{'group_by':'teacher_id'}"/>
+
+                <filter
+                    name="group_classroom"
+                    string="Classroom"
+                    context="{'group_by':'classroom_id'}"/>
+
+                <filter
+                    name="group_status"
+                    string="Status"
+                    context="{'group_by':'status'}"/>
+
+            </search>
+
+        </field>
+
+    </record>
+
+    <!-- ================================================= -->
+    <!-- ACTION -->
+    <!-- ================================================= -->
+
+    <record id="action_attendance" model="ir.actions.act_window">
+
+        <field name="name">Attendance</field>
+
+        <field name="res_model">university.attendance</field>
+
+        <field name="view_mode">list,form</field>
+
+        <field name="search_view_id"
+               ref="attendance_search_view"/>
+
+        <field name="help" type="html">
+
+            <p class="o_view_nocontent_smiling_face">
+                Create your first attendance record.
+            </p>
+
+            <p>
+                Manage student attendance by classroom and date.
+            </p>
+
+        </field>
+
+    </record>
+
+</odoo>

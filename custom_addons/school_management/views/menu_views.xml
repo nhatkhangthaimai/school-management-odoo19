@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================================================= -->
+    <!-- ROOT MENU -->
+    <!-- ================================================= -->
+
+    <menuitem
+        id="menu_university_root"
+        name="University ERP"
+        sequence="1"/>
+
+    <!-- ================================================= -->
+    <!-- DASHBOARD -->
+    <!-- ================================================= -->
+
+    <menuitem
+        id="menu_dashboard"
+        name="Dashboard"
+        parent="menu_university_root"
+        action="action_dashboard"
+        sequence="1"/>
+
+    <!-- ================================================= -->
+    <!-- MASTER DATA -->
+    <!-- ================================================= -->
+
+    <menuitem
+        id="menu_master"
+        name="Master Data"
+        parent="menu_university_root"
+        sequence="10"/>
+
+    <menuitem
+        id="menu_department"
+        name="Departments"
+        parent="menu_master"
+        action="action_department"
+        sequence="1"/>
+
+    <menuitem
+        id="menu_teacher"
+        name="Teachers"
+        parent="menu_master"
+        action="action_teacher"
+        sequence="2"/>
+
+    <menuitem
+        id="menu_subject"
+        name="Subjects"
+        parent="menu_master"
+        action="action_subject"
+        sequence="3"/>
+
+    <menuitem
+        id="menu_classroom"
+        name="Classrooms"
+        parent="menu_master"
+        action="action_classroom"
+        sequence="4"/>
+
+    <!-- ================================================= -->
+    <!-- STUDENT -->
+    <!-- ================================================= -->
+
+    <menuitem
+        id="menu_student_root"
+        name="Student Management"
+        parent="menu_university_root"
+        sequence="20"/>
+
+    <menuitem
+        id="menu_student"
+        name="Students"
+        parent="menu_student_root"
+        action="action_student"
+        sequence="1"/>
+
+    <menuitem
+        id="menu_enrollment"
+        name="Enrollments"
+        parent="menu_student_root"
+        action="action_enrollment"
+        sequence="2"/>
+
+    <menuitem
+        id="menu_grade"
+        name="Grades"
+        parent="menu_student_root"
+        action="action_grade"
+        sequence="3"/>
+
+    <menuitem
+        id="menu_attendance"
+        name="Attendance"
+        parent="menu_student_root"
+        action="action_attendance"
+        sequence="4"/>
+
+    <!-- ================================================= -->
+    <!-- ACADEMIC -->
+    <!-- ================================================= -->
+
+    <menuitem
+        id="menu_academic"
+        name="Academic"
+        parent="menu_university_root"
+        sequence="30"/>
+
+    <menuitem
+        id="menu_schedule"
+        name="Schedules"
+        parent="menu_academic"
+        action="action_schedule"
+        sequence="1"/>
+
+    <!-- ================================================= -->
+    <!-- AI -->
+    <!-- ================================================= -->
+<!-- 
+    <menuitem
+        id="menu_ai_root"
+        name="AI"
+        parent="menu_university_root"
+        sequence="40"/>
+
+    <menuitem
+        id="menu_ai_assistant"
+        name="AI Assistant"
+        parent="menu_ai_root"
+        action="action_ai_assistant"
+        sequence="1"/> -->
+
+</odoo>

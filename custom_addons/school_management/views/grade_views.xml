@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================================================= -->
+    <!-- TREE VIEW -->
+    <!-- ================================================= -->
+
+    <record id="grade_tree_view" model="ir.ui.view">
+
+        <field name="name">grade.tree</field>
+
+        <field name="model">university.grade</field>
+
+        <field name="arch" type="xml">
+
+            <list
+                decoration-success="status=='pass'"
+                decoration-danger="status=='fail'">
+
+                <field name="code"/>
+
+                <field name="student_id"/>
+
+                <field name="classroom_id"/>
+
+                <field name="subject_id"/>
+
+                <field name="teacher_id"/>
+
+                <field name="attendance"/>
+
+                <field name="midterm"/>
+
+                <field name="final"/>
+
+                <field name="total"/>
+
+                <field name="letter_grade"/>
+
+                <field name="classification"/>
+
+                <field name="status"/>
+
+            </list>
+
+        </field>
+
+    </record>
+
+    <!-- ================================================= -->
+    <!-- FORM VIEW -->
+    <!-- ================================================= -->
+
+    <record id="grade_form_view" model="ir.ui.view">
+
+        <field name="name">grade.form</field>
+
+        <field name="model">university.grade</field>
+
+        <field name="arch" type="xml">
+
+            <form string="Grade">
+
+                <header>
+
+                    <button
+                        name="action_calculate"
+                        type="object"
+                        string="Calculate"
+                        class="btn-primary"/>
+
+                    <field
+                        name="status"
+                        widget="statusbar"/>
+
+                </header>
+
+                <sheet>
+
+                    <group>
+
+                        <group>
+
+                            <field name="code"/>
+
+                            <field name="student_id"/>
+
+                            <field name="classroom_id"/>
+
+                            <field
+                                name="subject_id"
+                                readonly="1"/>
+
+                            <field
+                                name="teacher_id"
+                                readonly="1"/>
+
+                        </group>
+
+                        <group>
+
+                            <field
+                                name="semester"
+                                readonly="1"/>
+
+                            <field
+                                name="year"
+                                readonly="1"/>
+
+                            <field
+                                name="attendance"/>
+
+                            <field
+                                name="midterm"/>
+
+                            <field
+                                name="final"/>
+
+                        </group>
+
+                    </group>
+
+                    <separator string="Result"/>
+
+                    <group>
+
+                        <group>
+
+                            <field
+                                name="total"
+                                readonly="1"/>
+
+                            <field
+                                name="letter_grade"
+                                readonly="1"/>
+
+                        </group>
+
+                        <group>
+
+                            <field
+                                name="classification"
+                                readonly="1"/>
+
+                            <field
+                                name="status"
+                                readonly="1"/>
+
+                        </group>
+
+                    </group>
+
+                    <group>
+
+                        <field
+                            name="note"
+                            placeholder="Grade note..."/>
+
+                    </group>
+
+                    <!-- ========================================= -->
+                    <!-- NOTEBOOK -->
+                    <!-- ========================================= -->
+
+                    <notebook>
+                                            <!-- ========================================= -->
+                        <!-- GRADE INFORMATION -->
+                        <!-- ========================================= -->
+
+                        <page string="Grade Information">
+
+                            <group>
+
+                                <group>
+
+                                    <field
+                                        name="student_id"
+                                        readonly="1"/>
+
+                                    <field
+                                        name="classroom_id"
+                                        readonly="1"/>
+
+                                    <field
+                                        name="subject_id"
+                                        readonly="1"/>
+
+                                </group>
+
+                                <group>
+
+                                    <field
+                                        name="teacher_id"
+                                        readonly="1"/>
+
+                                    <field
+                                        name="semester"
+                                        readonly="1"/>
+
+                                    <field
+                                        name="year"
+                                        readonly="1"/>
+
+                                </group>
+
+                            </group>
+
+                            <separator string="Score"/>
+
+                            <group>
+
+                                <group>
+
+                                    <field name="attendance"/>
+
+                                    <field name="midterm"/>
+
+                                    <field name="final"/>
+
+                                </group>
+
+                                <group>
+
+                                    <field
+                                        name="total"
+                                        readonly="1"/>
+
+                                    <field
+                                        name="letter_grade"
+                                        readonly="1"/>
+
+                                    <field
+                                        name="classification"
+                                        readonly="1"/>
+
+                                    <field
+                                        name="status"
+                                        readonly="1"/>
+
+                                </group>
+
+                            </group>
+
+                        </page>
+
+                        <!-- ========================================= -->
+                        <!-- NOTE -->
+                        <!-- ========================================= -->
+
+                        <page string="Note">
+
+                            <field
+                                name="note"
+                                nolabel="1"
+                                placeholder="Enter grade note..."/>
+
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+
+            </form>
+
+        </field>
+
+    </record>
+        <!-- ================================================= -->
+    <!-- SEARCH VIEW -->
+    <!-- ================================================= -->
+
+    <record id="grade_search_view" model="ir.ui.view">
+
+        <field name="name">grade.search</field>
+
+        <field name="model">university.grade</field>
+
+        <field name="arch" type="xml">
+
+            <search>
+
+                <field name="code"/>
+
+                <field name="student_id"/>
+
+                <field name="classroom_id"/>
+
+                <field name="subject_id"/>
+
+                <field name="teacher_id"/>
+
+                <separator/>
+
+                <filter
+                    name="filter_pass"
+                    string="Pass"
+                    domain="[('status','=','pass')]"/>
+
+                <filter
+                    name="filter_fail"
+                    string="Fail"
+                    domain="[('status','=','fail')]"/>
+
+                <separator/>
+
+                <filter
+                    name="group_student"
+                    string="Student"
+                    context="{'group_by':'student_id'}"/>
+
+                <filter
+                    name="group_teacher"
+                    string="Teacher"
+                    context="{'group_by':'teacher_id'}"/>
+
+                <filter
+                    name="group_subject"
+                    string="Subject"
+                    context="{'group_by':'subject_id'}"/>
+
+                <filter
+                    name="group_classroom"
+                    string="Classroom"
+                    context="{'group_by':'classroom_id'}"/>
+
+            </search>
+
+        </field>
+
+    </record>
+
+    <!-- ================================================= -->
+    <!-- ACTION -->
+    <!-- ================================================= -->
+
+    <record id="action_grade" model="ir.actions.act_window">
+
+        <field name="name">Grades</field>
+
+        <field name="res_model">university.grade</field>
+
+        <field name="view_mode">list,form</field>
+
+        <field name="search_view_id"
+               ref="grade_search_view"/>
+
+        <field name="help" type="html">
+
+            <p class="o_view_nocontent_smiling_face">
+                Create your first grade.
+            </p>
+
+            <p>
+                Manage attendance score, midterm score,
+                final score and automatically calculate
+                the final result.
+            </p>
+
+        </field>
+
+    </record>
+
+</odoo>

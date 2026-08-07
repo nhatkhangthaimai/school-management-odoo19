@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================================================= -->
+    <!-- TREE VIEW -->
+    <!-- ================================================= -->
+
+    <record id="student_tree_view" model="ir.ui.view">
+
+        <field name="name">student.tree</field>
+
+        <field name="model">university.student</field>
+
+        <field name="arch" type="xml">
+
+            <list>
+
+                <field name="student_code"/>
+
+                <field name="name"/>
+
+                <field name="department_id"/>
+
+                <field name="classroom_id"/>
+
+                <field name="gender"/>
+
+                <field name="phone"/>
+
+                <field name="email"/>
+
+                <field name="active"/>
+
+            </list>
+
+        </field>
+
+    </record>
+
+    <!-- ================================================= -->
+    <!-- FORM VIEW -->
+    <!-- ================================================= -->
+
+    <record id="student_form_view" model="ir.ui.view">
+
+        <field name="name">student.form</field>
+
+        <field name="model">university.student</field>
+
+        <field name="arch" type="xml">
+
+            <form string="Student">
+
+                <sheet>
+
+                    <!-- ========================================= -->
+                    <!-- SMART BUTTON -->
+                    <!-- ========================================= -->
+
+                    <div class="oe_button_box" name="button_box">
+
+                        <button
+                            name="action_enrollments"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-book">
+
+                            <field
+                                name="enrollment_count"
+                                widget="statinfo"
+                                string="Enrollments"/>
+
+                        </button>
+
+                        <button
+                            name="action_grades"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-graduation-cap">
+
+                            <field
+                                name="grade_count"
+                                widget="statinfo"
+                                string="Grades"/>
+
+                        </button>
+
+                        <button
+                            name="action_attendance"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-check-square">
+
+                            <field
+                                name="attendance_count"
+                                widget="statinfo"
+                                string="Attendance"/>
+
+                        </button>
+
+                    </div>
+
+                    <!-- ========================================= -->
+                    <!-- INFORMATION -->
+                    <!-- ========================================= -->
+
+                    <group>
+
+                        <group>
+
+                            <field
+                                name="image"
+                                widget="image"/>
+
+                            <field name="student_code"/>
+
+                            <field name="name"/>
+
+                            <field name="date_of_birth"/>
+
+                            <field name="gender"/>
+
+                        </group>
+
+                        <group>
+
+                            <field name="department_id"/>
+
+                            <field name="classroom_id"/>
+
+                            <field name="phone"/>
+
+                            <field name="email"/>
+
+                            <field name="active"/>
+
+                        </group>
+
+                    </group>
+
+                    <group>
+
+                        <field
+                            name="address"
+                            placeholder="Address..."/>
+
+                    </group>
+
+                    <group>
+
+                        <field
+                            name="note"
+                            placeholder="Student note..."/>
+
+                    </group>
+
+                    <!-- ========================================= -->
+                    <!-- NOTEBOOK -->
+                    <!-- ========================================= -->
+
+                    <notebook>
+
+                        <!-- ========================================= -->
+                        <!-- ENROLLMENTS -->
+                        <!-- ========================================= -->
+
+                        <page string="Enrollments">
+
+                            <field
+                                name="enrollment_ids"
+                                readonly="1">
+
+                                <list>
+
+                                    <field name="classroom_id"/>
+
+                                    <field name="enroll_date"/>
+
+                                    <field name="state"/>
+
+                                </list>
+
+                            </field>
+
+                        </page>
+
+                        <!-- ========================================= -->
+                        <!-- GRADES -->
+                        <!-- ========================================= -->
+
+                        <page string="Grades">
+
+                            <field
+                                name="grade_ids"
+                                readonly="1">
+
+                                <list
+                                    decoration-success="status=='pass'"
+                                    decoration-danger="status=='fail'">
+
+                                    <field name="classroom_id"/>
+
+                                    <field name="subject_id"/>
+
+                                    <field name="teacher_id"/>
+
+                                    <field name="attendance"/>
+
+                                    <field name="midterm"/>
+
+                                    <field name="final"/>
+
+                                    <field name="total"/>
+
+                                    <field name="letter_grade"/>
+
+                                    <field name="classification"/>
+
+                                    <field name="status"/>
+
+                                </list>
+
+                            </field>
+
+                        </page>
+
+                        <!-- ========================================= -->
+                        <!-- ATTENDANCE -->
+                        <!-- ========================================= -->
+
+                        <page string="Attendance">
+
+                            <field
+                                name="attendance_ids"
+                                readonly="1">
+
+                                <list>
+
+                                    <field name="classroom_id"/>
+
+                                    <field name="teacher_id"/>
+
+                                    <field name="date"/>
+
+                                    <field name="status"/>
+
+                                </list>
+
+                            </field>
+
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+
+            </form>
+
+        </field>
+
+    </record>
+
+    <!-- ================================================= -->
+    <!-- SEARCH VIEW -->
+    <!-- ================================================= -->
+
+    <record id="student_search_view" model="ir.ui.view">
+
+        <field name="name">student.search</field>
+
+        <field name="model">university.student</field>
+
+        <field name="arch" type="xml">
+
+            <search>
+
+                <field name="student_code"/>
+                <field name="name"/>
+                <field name="department_id"/>
+                <field name="classroom_id"/>
+                <field name="phone"/>
+                <field name="email"/>
+
+                <separator/>
+
+                <filter
+                    name="filter_active"
+                    string="Active"
+                    domain="[('active','=',True)]"/>
+
+                <separator/>
+
+                <filter
+                    name="group_department"
+                    string="Department"
+                    context="{'group_by':'department_id'}"/>
+
+                <filter
+                    name="group_gender"
+                    string="Gender"
+                    context="{'group_by':'gender'}"/>
+
+                <filter
+                    name="group_classroom"
+                    string="Classroom"
+                    context="{'group_by':'classroom_id'}"/>
+
+            </search>
+
+        </field>
+
+    </record>
+
+    <!-- ================================================= -->
+    <!-- ACTION -->
+    <!-- ================================================= -->
+
+    <record id="action_student" model="ir.actions.act_window">
+
+        <field name="name">Students</field>
+
+        <field name="res_model">university.student</field>
+
+        <field name="view_mode">list,form</field>
+
+        <field name="search_view_id" ref="student_search_view"/>
+
+        <field name="help" type="html">
+
+            <p class="o_view_nocontent_smiling_face">
+                Create your first student.
+            </p>
+
+            <p>
+                Manage student information, enrollments,
+                grades and attendance records.
+            </p>
+
+        </field>
+
+    </record>
+
+</odoo>
