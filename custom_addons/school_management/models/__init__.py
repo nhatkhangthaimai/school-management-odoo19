@@ -8,3 +8,6 @@ from . import grade
 from . import attendance
 from . import schedule
 from . import dashboard
+from . import ai_assistant
+from . import ai_service
+from . import ai_settings

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form_school_ai" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.school.ai</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//form" position="inside">
+
+                <app string="AI Assistant"
+                     name="school_management"
+                     logo="/school_management/static/description/icon.png">
+
+                    <block title="AI Assistant">
+
+                        <setting string="OpenRouter API Key"
+                                 help="API key dùng để kết nối AI Assistant với OpenAI.">
+
+                            <field name="school_ai_openai_api_key"
+                                   password="True"
+                                   placeholder="sk-..."/>
+
+                        </setting>
+
+                        <setting string="AI Model"
+                                 help="Model AI được sử dụng cho AI Assistant.">
+
+                            <field name="school_ai_openai_model"
+                                   placeholder="gpt-4.1-mini"/>
+
+                        </setting>
+
+                    </block>
+
+                </app>
+
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

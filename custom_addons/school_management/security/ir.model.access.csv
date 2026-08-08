@@ -9,3 +9,5 @@ access_grade,grade,model_university_grade,,1,1,1,1
 access_attendance,attendance,model_university_attendance,,1,1,1,1
 access_schedule,schedule,model_university_schedule,,1,1,1,1
 access_dashboard,dashboard,model_university_dashboard,,1,1,1,1
+access_school_ai_assistant_user,school.ai.assistant.user,model_school_ai_assistant,base.group_user,1,1,1,1
+access_school_ai_settings,school.ai.settings,base.model_res_config_settings,base.group_system,1,1,1,1

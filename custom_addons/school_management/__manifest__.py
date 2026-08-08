@@ -44,6 +44,8 @@ Modules:
     "views/grade_views.xml",
     "views/attendance_views.xml",
     "views/schedule_views.xml",
+    'views/ai_assistant_views.xml',
+    "views/ai_settings_views.xml",
     "views/menu_views.xml",
 ],
 

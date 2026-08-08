@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <!-- ============================= -->
+    <!-- AI Assistant Form View -->
+    <!-- ============================= -->
+
+    <record id="view_school_ai_assistant_form" model="ir.ui.view">
+    <field name="name">school.ai.assistant.form</field>
+    <field name="model">school.ai.assistant</field>
+    <field name="arch" type="xml">
+
+        <form string="AI Assistant">
+
+            <header>
+                <button
+                    name="action_ask_ai"
+                    string="Ask AI"
+                    type="object"
+                    class="btn-primary"
+                />
+            </header>
+
+            <sheet>
+
+                <div class="oe_title">
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                </div>
+
+                <group string="Question">
+                    <field
+                        name="question"
+                        placeholder="Nhập câu hỏi..."
+                        nolabel="1"
+                    />
+                </group>
+
+                <separator string="AI Answer"/>
+
+                <group>
+                    <field
+                        name="ai_answer"
+                        readonly="1"
+                        nolabel="1"
+                        placeholder="Câu trả lời của AI sẽ xuất hiện ở đây..."
+                    />
+                </group>
+
+            </sheet>
+
+        </form>
+
+    </field>
+</record>
+
+
+    <!-- ============================= -->
+    <!-- AI Assistant List View -->
+    <!-- ============================= -->
+
+    <record id="view_school_ai_assistant_tree" model="ir.ui.view">
+        <field name="name">school.ai.assistant.tree</field>
+        <field name="model">school.ai.assistant</field>
+        <field name="arch" type="xml">
+
+            <list string="AI Assistant">
+
+                <field name="name"/>
+                <field name="question"/>
+                <field name="ai_answer"/>
+                <field name="create_date"/>
+
+            </list>
+
+        </field>
+    </record>
+
+
+    <!-- ============================= -->
+    <!-- AI Assistant Action -->
+    <!-- ============================= -->
+
+    <record id="action_school_ai_assistant" model="ir.actions.act_window">
+        <field name="name">AI Assistant</field>
+        <field name="res_model">school.ai.assistant</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+
+            <p class="o_view_nocontent_smiling_face">
+                Hãy đặt câu hỏi cho AI Assistant
+            </p>
+
+            <p>
+                AI Assistant có thể trả lời các câu hỏi
+                liên quan đến dữ liệu University ERP.
+            </p>
+
+        </field>
+    </record>
+
+
+    <!-- ============================= -->
+    <!-- AI Assistant Menu -->
+    <!-- ============================= -->
+
+    <menuitem
+        id="menu_school_ai_assistant"
+        name="AI Assistant"
+        action="action_school_ai_assistant"
+        sequence="10"
+    />
+
+</odoo>
